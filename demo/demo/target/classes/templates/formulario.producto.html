@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Formulario de Producto</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    div {
+        margin-bottom: 10px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input {
+        padding: 8px;
+        width: 100%;
+        max-width: 300px;
+    }
+    button {
+        padding: 10px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<h1>Formulario de Producto</h1>
+<form th:action="@{/productos}" th:object="${producto}" method="post">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" th:field="*{nombre}" required>
+  </div>
+  <div>
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" th:field="*{stock}" min="0" required>
+  </div>
+  <div>
+    <label for="precioCompra">Precio de Compra:</label>
+    <input type="number" step="0.01" id="precioCompra" th:field="*{precioCompra}" min="0" required>
+  </div>
+  <div>
+    <label for="precioVenta">Precio de Venta:</label>
+    <input type="number" step="0.01" id="precioVenta" th:field="*{precioVenta}" min="0" required>
+  </div>
+  <div>
+    <button type="submit">Guardar</button>
+  </div>
+</form>
+</body>
+</html>
